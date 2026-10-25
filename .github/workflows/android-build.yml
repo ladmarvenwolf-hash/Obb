@@ -1,0 +1,28 @@
+name: Android build check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  inspect:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Download source code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Show project build files
+        run: |
+          echo "=== Root files ==="
+          ls -la
+          echo "=== Build instructions ==="
+          find . -maxdepth 3 \
+            \( -name README.md -o -name CMakeLists.txt \
+            -o -name build.gradle -o -name settings.gradle \
+            -o -name gradlew \) -print | head -200
+            
