@@ -1,3 +1,4 @@
+
 name: Android build check
 
 on:
@@ -25,4 +26,3 @@ jobs:
             \( -name README.md -o -name CMakeLists.txt \
             -o -name build.gradle -o -name settings.gradle \
             -o -name gradlew \) -print | head -200
-            
